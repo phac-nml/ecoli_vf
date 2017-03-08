@@ -24,7 +24,7 @@ def shortnames(fname='data/repaired_ecoli_vfs.ffn'):
         q=p
         while q<len(lines)-1:
             subq = identify_name(lines[q])
-            if ((subp.lower().startswith(subq.lower())) or (subq.lower().startswith(subp.lower()))) and (subp != 'st') and (subq != 'st'):
+            if ((subp.lower() in subq.lower()) or (subq.lower() in subp.lower())) and (subp != 'st') and (subq != 'st'):
                 if len(subp) > len(subq):
                     lines[p] = lines[p].replace(subp,subq,1)
                 elif len(subp) < len(subq):
