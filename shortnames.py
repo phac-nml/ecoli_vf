@@ -1,4 +1,7 @@
 def identify_name(line):
+    '''
+    Determines the name of the gene in a given header.
+    '''
     sub = ''
     if ')' in  line:
         if 'gi:' in line:
@@ -9,12 +12,18 @@ def identify_name(line):
 
 def weird_name(subq,subp):
     '''
-    returns true if either value is a weird name and short be ignored
+    Returns true if either value is a name which is problematic for our
+    substring search approach and short be ignored.
     '''
     t = ('st','tia')
     return (subq in t) or (subp in t)
 
 def shortnames(fname='data/repaired_ecoli_vfs.ffn'):
+    '''
+    A substring search method which looks for the shortest gene names, in a
+    file of reference sequences, and replaces the longer names with the shorter
+    ones.
+    '''
     lines = []
     with open(fname) as f:
         lines = [line.rstrip('\n') for line in f]
@@ -34,6 +43,7 @@ def shortnames(fname='data/repaired_ecoli_vfs.ffn'):
         while q<len(lines)-1:
             subq = identify_name(lines[q])
             if ((subp.lower() in subq.lower()) or (subq.lower() in subp.lower())) and not weird_name(subq, subp):
+                # replace just the name (ex. eaeH), doesn't replace entire header
                 if len(subp) > len(subq):
                     lines[p] = lines[p].replace(subp,subq,1)
                 elif len(subp) < len(subq):
