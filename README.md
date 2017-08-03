@@ -6,4 +6,4 @@ Contributions welcome.
 
 To check difference in repaired_ecoli_vfs_shortnames.ffn from the regular repaired_ecoli_vfs.ffn, run:
 
-`git diff bf823a0cf0b8b912bed025ea3d7a40c448d51c09 45360ad2988dcce4e298121eaad5a52aa1e6a77d`
+`git diff bf823a0cf0b8b912bed025ea3d7a40c448d51c09 64a893b9b9b574a2d83db76a0439c01eba263efc`
